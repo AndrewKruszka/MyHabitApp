@@ -212,6 +212,53 @@ This document consolidates project information including styling, database schem
 
 ---
 
+## Core Libraries
+
+| Purpose | Library | Notes |
+|:---|:---|:---|
+| App Navigation | `@react-navigation/native`, `@react-navigation/native-stack` | Screen transitions and stack navigation |
+| Core Native Modules | `react-native-screens`, `react-native-safe-area-context` | Required by React Navigation |
+| Gesture Handling | `react-native-gesture-handler`, `react-native-reanimated` | Smooth swiping and transitions |
+| Local Database | `expo-sqlite` | Offline-first SQLite data storage |
+| Charting | `victory-native`, `react-native-svg` | Render mood and habit graphs |
+| State Management | React Context API (built-in) or `zustand` (optional) | Global app state |
+| Forms Handling | `react-hook-form` or `formik` (plus `yup` if needed) | Building forms like Trackable creation, SubPages |
+| AI Integration | Native `fetch` | Structured prompts and API calls to OpenAI |
+
+---
+
+## Dev/Utility Dependencies
+
+| Purpose | Library | Notes |
+|:---|:---|:---|
+| UUID Generation | `uuid` | Safe ID generation for offline database writes |
+| Environment Variables | `expo-constants` | Manage API keys securely within Expo apps |
+
+---
+
+## Future / Planned (v2)
+
+| Purpose | Library | Notes |
+|:---|:---|:---|
+| Cloud Backup | `firebase` (`firebase/auth`, `firebase/firestore`) | User account and data syncing |
+| Notifications | `expo-notifications` | Local notifications for reminders |
+| File Storage (Optional) | `expo-file-system` | Data backup and file export capabilities |
+
+---
+
+## Special Notes
+- `react-native-svg` must be installed separately for `victory-native` to work.
+- Always wrap your app inside a `NavigationContainer` for React Navigation to function.
+- `expo-sqlite` does not require native linking inside Expo projects.
+- No special OpenAI client library is required; `fetch` is sufficient.
+
+---
+
+**End of Document**
+
+
+
+
 # MVP Features
 
 | Feature                  | Description                                                             |
@@ -270,3 +317,115 @@ This document consolidates project information including styling, database schem
 - Option to create a new custom trackable if none found
 
 ---
+
+# /docs Reference Index
+This directory contains all design documentation, UX storyboards, architecture plans, and mockup assets. Cursor can use these for deeper context during development.
+
+# guide/ — Development Documentation
+## codebase/
+Contains technical planning documents:
+
+database-planning.pdf
+Details the full SQLite schema, table structures, relationships, and offline behavior.
+
+folder-file-structure.pdf
+Defines the ideal folder structure for scalable code organization. Used to scaffold /components, /screens, /services, etc.
+
+functional-specification.pdf
+Full feature breakdown of the app: trackables, mood tracking styles, AI insight system, subpages, and offline-first logic.
+
+libraries-dependencies.pdf
+Lists core packages (e.g., react-hook-form, expo-sqlite, @react-navigation) and their installation commands.
+
+pre-development-steps.pdf
+Outlines 5 critical tasks before starting dev: wireframing, schema design, library testing, AI prompt structure.
+
+tech-stack-UX-blueprint.pdf
+High-level architectural blueprint + UX flows (onboarding, dashboard, insights, etc.).
+
+## storyboard/
+These PDFs describe visual and interactive flow for onboarding and wireframes:
+
+onboarding-storyboard.pdf
+Complete flow of onboarding screens: welcome, habit selection, mood style, confirmation.
+
+wireframe-planning.pdf
+Lays out must-wireframe screens like dashboard, history view, add events, etc.
+
+---
+
+# styles/
+visual-styles.pdf
+UI style guide with color palette (#2C7BE5, #00BFA5), fonts (Poppins, Inter), button/card styles, spacing, and interaction effects.
+
+---
+
+# ux/
+Detailed screen-specific UX documentation:
+
+UX-history.pdf
+Layout of calendar-based history view + detailed mood/habit logs.
+
+UX-insights.pdf
+How daily AI-generated insights are displayed, with feedback options.
+
+UX-Main-Components.pdf
+Daily dashboard, event modals, subpage mini-reports, and interaction behaviors.
+
+UX-onboarding-styles.pdf
+UX structure for onboarding (style and layout logic).
+
+UX-tracking-manager.pdf
+Managing trackables: toggling daily/non-daily, editing, deleting, and creating with subforms.
+
+---
+
+# mockups/ — Visual Screen Assets
+## history/
+history_view.png — Calendar mood heatmap + chart toggle (numeric, boolean, mood).
+
+insights.png — Scrollable daily AI insight cards with agree/disagree UI.
+
+## main/
+add_trackable.png — UI for searching and adding non-daily events.
+
+dashboard.png — Mood slider, daily checklist, notes input, and submit button.
+
+trackable_subpage.png — Example of a filled-out subpage mini-report.
+
+## manage/
+create_trackable.png — Modal for naming a new habit, selecting type, adding subform.
+
+manage_daily.png — Main screen to view all habits and toggle daily/non-daily.
+
+## onboarding/
+confirmation.png — Final onboarding step with summary and Start Tracking button.
+
+create_habits.png — Form to create custom trackables during onboarding.
+
+landing_page.png — Welcome screen with brand, description, and Get Started CTA.
+
+pick_habits.png — Habit grid selection (preset or custom).
+
+set_mood.png — Select mood tracking frequency (Daily or Multiple Times a Day).
+
+---
+
+📄 Project Descriptions
+MyHabitApp.md — Primary project documentation file with:
+
+Tech stack
+
+Styling guide
+
+Schema overview
+
+Folder structure
+
+UX flows
+
+MVP checklist
+
+README.md — Optional alternate entrypoint or GitHub-facing project summary.
+
+
