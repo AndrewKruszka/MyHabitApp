@@ -1,0 +1,177 @@
+# Overview
+
+The Daily Tracking App (MyHabits) is a mobile-first application that enables users to track their mood, habits, and lifestyle activities with full offline functionality. It solves the problem of rigid, overly complex habit trackers by focusing on personalization, mood-driven insights, and clean UX. Designed for users seeking mental clarity, routine optimization, and personal insight, the app offers an intuitive and motivating way to develop self-awareness and consistency.
+
+# Core Features
+
+**1. Customizable Trackables**
+
+- Lets users track anything from workouts to water intake.
+- Provides flexibility for diverse routines.
+- Users create new items by naming them and selecting input types like boolean, time, number, or short text.
+
+**2. Mood Tracking (Daily or Segmented)**
+
+- Tracks user mood either once daily or in segments (morning, afternoon, evening).
+- Offers emotional pattern recognition over time.
+- Mood input is a slider or multiple segmented inputs saved to the daily report.
+
+**3. Sub-Page Mini Reports**
+
+- Optional micro-reports tied to events (e.g., a Golf round with course + score).
+- Enables deeper logging while keeping core flows lightweight.
+- User defines optional fields when creating a trackable.
+
+**4. AI-Powered Daily Insights**
+
+- Uses OpenAI API to generate summaries from the day’s entries.
+- Helps users reflect and find cause/effect patterns.
+- AI prompt is triggered on submission; feedback loop allows users to rate insights.
+
+**5. Historical Views**
+
+- Offers charts, completion streaks, and mood calendars.
+- Reinforces long-term progress.
+- Uses Victory Native to render local SQLite-stored entries.
+
+**6. Full Offline-First Support**
+
+- Everything (except insight generation) works offline.
+- Ideal for travelers, remote users, or privacy-minded individuals.
+- All data is stored locally in SQLite.
+
+# User Experience
+
+**User Personas**
+
+- *College Student*: Uses segmented mood, study habits, screen time tracking to find patterns in their daily life
+- *Working Parent*: Quick daily checklist and sleep tracking.
+
+**Key User Flows**
+
+- **Onboarding**:  Choose default habits → Create custom trackables → Select mood tracking style →Confirmation → Dashboard.
+- **Daily Use**: Open dashboard → Log mood + habits → Add optional events → Submit report → View insights.
+- **Manage Trackables**: View/edit/delete/create trackables → Add sub-page templates.
+- **Insights & History**: Scroll insights, tap calendar days, view patterns.
+
+**UI/UX Considerations**
+
+- Rounded pill buttons, soft shadows, wavy gradient background.
+- Fonts: Poppins (headings), Inter (body).
+- Persistent animated background, quick transitions, forgiving inputs.
+
+---
+
+# Technical Architecture
+
+**System Components**
+
+- React Native frontend with Expo
+- Local SQLite database (expo-sqlite)
+- OpenAI API integration (via `fetch`)
+- Victory Native for charting
+- React Navigation stack
+
+**Data Models**
+
+- `DailyReports`: mood, notes, timestamps
+- `Trackables`: id, type, is_daily, subpage template JSON
+- `DailyReportEntries`: report_id, value, subpage_id (optional)
+- `Insights`: AI response, user feedback
+- `SubPages` & `SubPageEntries`: Custom mini-report templates and responses
+
+**APIs and Integrations**
+
+- OpenAI: Text completion via GPT-4 Turbo
+- Firebase (v2): Future cloud sync + user auth
+
+**Infrastructure Requirements**
+
+- Expo setup (no native linking needed)
+- Secure environment keys via expo-constants
+- UUID for offline-safe writes
+
+---
+
+# Development Roadmap
+
+**Phase 1: MVP Foundation**
+
+- Onboarding Flow
+- Trackables system (create/edit/toggle daily)
+- Daily Dashboard with mood input and notes
+- Local storage with SQLite
+- Sub-page creation and entry support
+- Insight generation with feedback buttons
+- History views (calendar, graphs, streaks)
+
+**Phase 2: Core Polish and Edge Features**
+
+- AI insight refinement and chat expansion (text-based assistant)
+- Search/add new trackables via SearchTrackables screen
+- Settings management (theme, tracking preferences)
+
+**Phase 3: Post-MVP Extensions**
+
+- Firebase auth and sync
+- Notification system (expo-notifications)
+- Export/share data, theme personalization, collaborative tracking
+
+---
+
+# Logical Dependency Chain
+
+**Step 1: Data Foundation**
+
+- Set up SQLite schema and local services
+- Create `TrackablesContext`, `MoodContext`, and CRUD queries
+- Build `TrackableCard`, `MoodSlider`, `SubPageInputGroup` components
+
+**Step 2: Visible Frontend MVP**
+
+- Onboarding flow (screen, context writes)
+- Dashboard UI with local entry form
+- Local saving to DB with auto-insertion to DailyReports
+- Mock insight generation for offline demo
+
+**Step 3: Add Depth and Feedback**
+
+- Sub-page modals
+- History calendar and detail views
+- AI insight and feedback submission
+
+**Step 4: Edge Features and Cleanup**
+
+- Search, edit, and reorder trackables
+- Insight model enhancements, mood overlays
+- Settings, backup stub logic
+
+---
+
+# Risks and Mitigations
+
+**Risk: Technical Integration Complexity**
+
+- *Mitigation:* All services are modularized (OpenAI, SQLite, State), allowing isolated testing.
+
+**Risk: MVP Bloat**
+
+- *Mitigation:* Clear phase separation; sub-pages and AI are core, but chat and sync are v2.
+
+**Risk: SQLite sync complexity (for v2)**
+
+- *Mitigation:* Use UUIDs everywhere and map Firebase schema to local table logic.
+
+**Risk: Offline UX edge cases (e.g., insight retries)**
+
+- *Mitigation:* Insight submissions stored in middleware queue (planned `/middleware/queue.ts`).
+
+---
+
+# Appendix
+
+- Folder structure in `folder-file-structure.pdf`
+- UX storyboards and flows in `UX-*.pdf` series
+- Database schema and examples in `database-planning.pdf`
+- Visual style guide in `visual-styles.pdf`
+- Full project overview in `MyHabitApp.md`

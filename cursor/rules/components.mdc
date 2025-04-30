@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /components — Component Rules
+
+## Purpose
+Stateless, reusable UI blocks. These should:
+- Accept props only (no local state or side effects)
+- Follow the app's visual style (rounded cards, pill buttons, soft shadows)
+- Use `Poppins` and `Inter` for fonts
+
+## Contents
+Expected files:
+- Button.tsx
+- MoodSlider.tsx
+- TrackableCard.tsx
+- SubPageInputGroup.tsx
+- InsightCard.tsx
+- HeaderBar.tsx
+
+## Guidelines
+- Avoid inlining logic. Extract logic to hooks or contexts.
+- Export all components as default.
+
+## To-Do
+- [ ] Add IconButton
+- [ ] Extract reusable MoodChip

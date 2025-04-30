@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /services/db — SQLite Schema Notes
+
+## Tables
+- DailyReports
+- Trackables
+- SubPages
+- DailyReportEntries
+- SubPageEntries
+- Insights
+
+## Relationships
+- DailyReports → DailyReportEntries (1-to-many)
+- Entries → SubPageEntries (optional)
+- SubPages define templates
+- Each Insight linked to a DailyReport
+
+## Storage Strategy
+- Use `uuid` for primary keys
+- JSON fields for subform flexibility
+- `created_at` / `updated_at` timestamps on all
+
+## To-Do
+- [ ] Seed default habits for new installs
+- [ ] Plan v2 cloud-ready sync flags

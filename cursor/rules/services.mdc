@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /services — Service Logic Rules
+
+## Purpose
+Manage local database, AI logic, and cloud sync (v2). This folder handles:
+- SQLite setup and queries
+- AI prompt generation and OpenAI requests
+- (future) Firebase cloud sync
+
+## Structure
+- /db/schema.ts — table definitions
+- /db/setup.ts — connection/init
+- /db/queries.ts — common DB operations
+- /ai/openaiClient.ts — fetch wrapper for OpenAI
+- /ai/promptBuilder.ts — builds insight prompt strings
+
+## Guidelines
+- All services must function offline
+- Use UUIDs and consistent timestamps
+- Avoid direct component usage
+
+## To-Do
+- [ ] Add AI retry queue
+- [ ] Encrypt sensitive fields before syncing (v2)

@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /services/ai — AI Insights Integration Rules
+
+## Purpose
+Use OpenAI API to create 1–3 sentence reflections on user data.
+
+## Prompt Input
+- Mood (1–10 or segmented)
+- Habits completed
+- Notes
+- (optional) SubPage fields
+
+## Output
+- Insight text (string)
+- Stored in `Insights` table
+- Feedback field: agree/disagree + optional text
+
+## Prompt Example
+Given the following: mood = 7, completed = [Workout, Meditated], notes = "long day at work"...
+
+## To-Do
+- [ ] Build `promptBuilder.ts`
+- [ ] Add fallback queue if fetch fails offline

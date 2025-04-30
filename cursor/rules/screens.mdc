@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /screens — Screen-Level Rules
+
+## Purpose
+Top-level route-driven views. These files:
+- Organize high-level page layouts and app flows
+- Compose reusable components + context
+
+## Pattern
+Each screen should have:
+- index.tsx
+- styles.ts
+- (optional) hooks.ts
+
+## Guidelines
+- Use the wavy gradient background consistently
+- Respect visual spacing (24px+ between blocks)
+- Keep navigation logic within screen or AppNavigator
+
+## To-Do
+- [ ] Add AuthNavigator for login (v2)
+- [ ] Create a splash screen / loading fallback

@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# /contexts — Global State Rules
+
+## Purpose
+Use React Context or Zustand to manage app-wide state (e.g. mood, settings, trackables).
+
+## Current Contexts
+- TrackablesContext.tsx
+- MoodContext.tsx
+- SettingsContext.tsx
+
+## Guidelines
+- Wrap entire app in context providers (see App.tsx)
+- Avoid overloading context with derived state
+- Create selector hooks when needed
+
+## To-Do
+- [ ] Add InsightsContext for AI feedback queue
+- [ ] Add useTodayReport() helper hook
